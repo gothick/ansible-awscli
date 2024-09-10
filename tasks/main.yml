@@ -10,6 +10,7 @@
 
 - name: Install awscli via snap
   community.general.snap:
+    classic: true
     name:
       - aws-cli
   when: ansible_distribution_release in ['noble']
