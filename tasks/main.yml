@@ -1,37 +1,11 @@
 ---
-
-- name: Install AWS command-line interface package
-  community.general.snap:
-    classic: true
-    name:
-      - aws-cli
-
-- name: Install basic tools
+- name: Install awscli. This installs v1 on jammy, v2 on noble. Fine by me.
   ansible.builtin.apt:
     state: present
     update_cache: true
     cache_valid_time: 3600
     name:
-      - python3
-      - python3-pip
-      - unzip
-      - ncdu
-      - iotop
-      - git
-      - htop
-
-# Defaults look like:
-# awscli_config_file_path: "/root/.aws/config"
-# awscli_config_ids: {}
-# awscli_config_ids is a dictionary of AWS ID details (key ID, secret key and region) indexed
-# by the name you want to give the key. The first key should be indexed with the name "default":
-#
-# default:
-#   aws_access_key_id: "ID"
-#   aws_secret_access_key: "KEY"
-#   region: us-east-1
-# etc:
-#   ...
+      - awscli
 
 - name: Get specified user's home directory
   ansible.builtin.user:
